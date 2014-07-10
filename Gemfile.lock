@@ -1,0 +1,18 @@
+PATH
+  remote: .
+  specs:
+    motion_print (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bacon (1.2.0)
+    rake (10.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bacon
+  motion_print!
+  rake
