@@ -45,8 +45,14 @@ mp({b: "bee", a: 'a', see: 4})
 
 Add this line to your application's Gemfile:
 
+Stable:
 ```ruby
 gem 'motion_print'
+```
+
+Bleeding Edge:
+```ruby
+gem 'motion_print', github: 'MohawkApps/motion_print'
 ```
 
 And then execute:
