@@ -6,37 +6,38 @@ instead of using `p` or `puts`, use `mp` to log your debug values to the RubyMot
 
 ## Examples:
 
-```
+```ruby
 mp "a string"
-```
-<span style="color:gold;">a string</span>
 
+"a string"
 ```
+
+```ruby
 mp :some_symbol
+
+:some_symbol
 ```
-<span style="color:limegreen;">:some_symbol</span>
 
 ```
 mp [1, 'two', :three, 4.0]
-```
 
-[  
->  <span style="color:mediumblue;">1</span>,  
->  <span style="color:gold;">two</span>,  
->  <span style="color:limegreen;">:three</span>,  
->  <span style="color:mediumblue;">4.0</span>  
+[
+  1, 
+  'two', 
+  :three, 
+  4.0
 ]
-
 ```
+
+```ruby
 mp({a: 'a', b: "bee", c: 4})
-```
 
-{  
->  :a     => <span style="color:gold;">a</span>,  
->  :b     => <span style="color:gold;">bee</span>,  
->  :see   => <span style="color:mediumblue;">4</span>  
+{
+  a     => a, 
+  b     => bee, 
+  see   => 4
 }
-
+```
 
 ## Installation
 
