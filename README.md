@@ -67,6 +67,12 @@ bundle
 1. Add more core objects people want to output: `UIView`, `Struct`, etc. Please open an issue to make suggestions or just implement it yourself and send me a pull request!
 2. ~~Test suite.~~
 
+## What about awesome_print_motion?
+
+I used to be a big fan of [awesome_print_motion](https://github.com/michaeldv/awesome_print_motion). Then I ran the Instruments allocations profiler on an app that had a big loop with lots of `ap` statements. You should have seen the graph increase exponentially over a few seconds. Then I took a look at the actual `awesome_print_motion` source code. It's basically a direct port of the `awesome_print` gem and just modified to "work" with RubyMotion. There's all kinds of core class extensions and crazy threading things going on... way too complex for my needs to output a pretty version of an object or hash or array.
+
+That, coupled with the fact that the developer of awesome_print_motion doesn't seem responsive to [issues](https://github.com/michaeldv/awesome_print_motion/issues) or [pull requests](https://github.com/michaeldv/awesome_print_motion/pulls), I decided to roll my own debugging tool specifically written for RubyMotion development.
+
 ## Contributing
 
 1. Fork it
