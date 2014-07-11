@@ -80,3 +80,14 @@ That, coupled with the fact that the developer of awesome_print_motion doesn't s
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Contact
+
+Mark Rickert ([http://www.mohawkapps.com](http://www.mohawkapps.com))
+
+- [http://twitter.com/markrickert](http://twitter.com/markrickert)
+- [mark@mohawkapps.com](mark@mohawkapps.com)
+
+## License
+
+motion_print is available under the MIT license. See the LICENSE file for more info.
