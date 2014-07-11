@@ -24,11 +24,6 @@ module MotionPrint
       end
     end
 
-    def l_dir(d)
-      ls = `ls -alF #{d.path.shellescape}`
-      colorize(ls.empty? ? d.inspect : "#{d.inspect}\n#{ls.chop}")
-    end
-
     def l_array(a, indent_level = 1)
       return "[]" if a.empty?
       out = []
@@ -68,6 +63,11 @@ module MotionPrint
       end
 
       "{\n" << out.join(",\n") << "\n#{indent_by(indent_level-1)}}"
+    end
+
+    def l_dir(d)
+      ls = `ls -alF #{d.path.shellescape}`
+      colorize(ls.empty? ? d.inspect : "#{d.inspect}\n#{ls.chop}")
     end
 
     def l_symbol(object)
