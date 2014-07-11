@@ -65,7 +65,7 @@ bundle
 ## Roadmap
 
 1. Add more core objects people want to output: `UIView`, `Struct`, etc. Please open an issue to make suggestions or just implement it yourself and send me a pull request!
-2. Test suite.
+2. ~~Test suite.~~
 
 ## Contributing
 
