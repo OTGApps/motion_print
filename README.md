@@ -75,6 +75,10 @@ I used to be a big fan of [awesome_print_motion](https://github.com/michaeldv/aw
 
 That, coupled with the fact that the developer of awesome_print_motion doesn't seem responsive to [issues](https://github.com/michaeldv/awesome_print_motion/issues) or [pull requests](https://github.com/michaeldv/awesome_print_motion/pulls), I decided to roll my own debugging tool specifically written for RubyMotion development.
 
+`awesome_print_motion` is 793 lines of code and extends `Array`, `Kernel`, `Class`, and `Object`, and is _not_ tested.
+
+`motion_print` is 152 lines of code, adds one method each to `String`, and `Kernel`, and is _fully_ tested (run `rake spec` to see the tests pass).
+
 ## Contributing
 
 1. Fork it
