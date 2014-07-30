@@ -59,7 +59,7 @@ module MotionPrint
         else
           v = logger(value)
         end
-        out << (align(key, width, indent_level) << colorize(" => ", :hash) << v)
+        out << (align(key, width, indent_level) << hash_rocket << v)
       end
 
       "{\n" << out.join(",\n") << "\n#{indent_by(indent_level-1)}}"
@@ -71,12 +71,16 @@ module MotionPrint
     end
 
     def l_symbol(object)
-      colorize(':' << object.to_s, object)
+      colorize(object, object)
     end
 
     def colorize(object, type = nil)
       type = object if type.nil?
-      Colorizer.send(decide_color(type), object)
+      Colorizer.send(decide_color(type), object.inspect)
+    end
+
+    def hash_rocket
+      Colorizer.send(decide_color(:hash), " => ")
     end
 
     def decide_color(object)

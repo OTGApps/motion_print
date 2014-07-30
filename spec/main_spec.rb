@@ -32,16 +32,16 @@ describe "motion_print gem" do
     # Numbers
     MotionPrint.logger([1, 2]).should == "[\n  \e[1;34m1\e[0m,\n  \e[1;34m2\e[0m\n]"
     # Strings
-    MotionPrint.logger(['1', '2']).should == "[\n  \e[0;33m1\e[0m,\n  \e[0;33m2\e[0m\n]"
+    MotionPrint.logger(['1', '2']).should == "[\n  \e[0;33m\"1\"\e[0m,\n  \e[0;33m\"2\"\e[0m\n]"
   end
 
   it 'outputs multidimensional arrays properly' do
     # Numbers and Strings
-    MotionPrint.logger([1, 2, ['1', '2']]).should == "[\n  \e[1;34m1\e[0m,\n  \e[1;34m2\e[0m,\n  [\n    \e[0;33m1\e[0m,\n    \e[0;33m2\e[0m\n  ]\n]"
+    MotionPrint.logger([1, 2, ['1', '2']]).should == "[\n  \e[1;34m1\e[0m,\n  \e[1;34m2\e[0m,\n  [\n    \e[0;33m\"1\"\e[0m,\n    \e[0;33m\"2\"\e[0m\n  ]\n]"
   end
 
   it 'outputs hashes properly' do
-    MotionPrint.logger({a: 'a', b: 2}).should == "{\n  \e[0;36m:a\e[0m  \e[0;36m => \e[0m\e[0;33ma\e[0m,\n  \e[0;36m:b\e[0m  \e[0;36m => \e[0m\e[1;34m2\e[0m\n}"
+    MotionPrint.logger({a: 'a', b: 2}).should == "{\n  \e[0;36m:a\e[0m  \e[0;36m => \e[0m\e[0;33m\"a\"\e[0m,\n  \e[0;36m:b\e[0m  \e[0;36m => \e[0m\e[1;34m2\e[0m\n}"
   end
 
   it 'outputs hashes with arrays properly' do
@@ -53,7 +53,7 @@ describe "motion_print gem" do
         12,
         String
       ]
-    }).should == "{\n  \e[0;36m:a\e[0m  \e[0;36m => \e[0m\e[0;33ma\e[0m,\n  \e[0;36m:b\e[0m  \e[0;36m => \e[0m\e[1;34m2\e[0m,\n  \e[0;36m:c\e[0m  \e[0;36m => \e[0m[\n    \e[1;34m4.4\e[0m,\n    \e[1;34m12\e[0m,\n    \e[1;33mString\e[0m\n  ]\n}"
+    }).should == "{\n  \e[0;36m:a\e[0m  \e[0;36m => \e[0m\e[0;33m\"a\"\e[0m,\n  \e[0;36m:b\e[0m  \e[0;36m => \e[0m\e[1;34m2\e[0m,\n  \e[0;36m:c\e[0m  \e[0;36m => \e[0m[\n    \e[1;34m4.4\e[0m,\n    \e[1;34m12\e[0m,\n    \e[1;33mString\e[0m\n  ]\n}"
   end
 
   it 'outputs numbers correctly' do
