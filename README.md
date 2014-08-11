@@ -2,7 +2,7 @@
 
 A RubyMotion pretty printer.
 
-[![Gem Version](https://badge.fury.io/rb/motion_print.svg)](http://badge.fury.io/rb/motion_print) [![Build Status](https://travis-ci.org/MohawkApps/motion_print.svg)](https://travis-ci.org/MohawkApps/motion_print) [![Code Climate](https://codeclimate.com/github/MohawkApps/motion_print.png)](https://codeclimate.com/github/MohawkApps/motion_print) 
+[![Gem Version](https://badge.fury.io/rb/motion_print.svg)](http://badge.fury.io/rb/motion_print) [![Build Status](https://travis-ci.org/MohawkApps/motion_print.svg)](https://travis-ci.org/MohawkApps/motion_print) [![Code Climate](https://codeclimate.com/github/MohawkApps/motion_print.png)](https://codeclimate.com/github/MohawkApps/motion_print)
 
 instead of using `p` or `puts`, use `mp` to log your debug values to the RubyMotion REPL.
 
@@ -10,7 +10,7 @@ instead of using `p` or `puts`, use `mp` to log your debug values to the RubyMot
 
 <small>Colors don't show up correctly on github, so these are just examples of what you can do with `motion_print`. Try it out for yourself to see the more colorful output!</small>
 
-![](http://i.imgur.com/ylhuXw2.png)
+![screen shot](http://i.imgur.com/LgW2Dkn.png)
 
 ```ruby
 mp "a string"
@@ -28,9 +28,9 @@ mp :some_symbol
 mp [1, 'two', :three, 4.0]
 
 [
-  1, 
-  'two', 
-  :three, 
+  1,
+  'two',
+  :three,
   4.0
 ]
 ```
@@ -39,8 +39,8 @@ mp [1, 'two', :three, 4.0]
 mp({b: "bee", a: 'a', see: 4})
 
 {
-  a     => a, 
-  b     => bee, 
+  a     => a,
+  b     => bee,
   see   => 4
 }
 ```
