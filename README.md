@@ -10,7 +10,8 @@ instead of using `p` or `puts`, use `mp` to log your debug values to the RubyMot
 
 <small>Colors don't show up correctly on github, so these are just examples of what you can do with `motion_print`. Try it out for yourself to see the more colorful output!</small>
 
-![screen shot](http://i.imgur.com/LgW2Dkn.png)
+![screen shot](http://i.imgur.com/5l0v4dT.png)
+
 
 ```ruby
 mp "a string"
