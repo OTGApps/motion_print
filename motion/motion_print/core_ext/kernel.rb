@@ -5,4 +5,5 @@ module Kernel
   end
 
   module_function :mp
+  alias :mp :ap
 end
