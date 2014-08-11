@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = MotionPrint::VERSION
   spec.authors       = ['Mark Rickert']
   spec.email         = ['mjar81@gmail.com']
-  spec.description   = 'motion_print is a RubyMotion friendly console logger and debigging tool.'
+  spec.description   = 'motion_print is a RubyMotion friendly console logger and debugging tool.'
   spec.summary       = 'A RubyMotion pretty printer.'
   spec.homepage      = 'https://github.com/MohawkApps/motion_print'
   spec.license       = 'MIT'
