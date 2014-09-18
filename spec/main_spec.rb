@@ -73,6 +73,19 @@ describe "motion_print gem" do
     MotionPrint.logger(false).should == "\e[1;31mfalse\e[0m"
   end
 
+  describe "CDQ Object Handling" do
+    # Mock CDQ object
+    before do
+      class CDQManagedObject
+        def log; end
+      end
+    end
+
+    it 'handles CDQManagedObject printing' do
+      MotionPrint.logger(CDQManagedObject.new).should == nil
+    end
+  end
+
   # ...
 
 end
