@@ -15,15 +15,20 @@ module MotionPrint
         l_dir object
       when Hash
         l_hash object, indent_level
-      # Enjoy some CDQ Magic
-      when CDQManagedObject
-        l_cdq object, indent_level
       # when File
       #   l_file object
       # when Struct
       #   l_struct object
       else
-        colorize(object)
+        if defined? CDQManagedObject
+          if object.is_a? CDQManagedObject
+            l_cdq object, indent_level
+          else
+            colorize(object)
+          end
+        else
+          colorize(object)
+        end
       end
     end
 
