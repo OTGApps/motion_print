@@ -15,12 +15,25 @@ module MotionPrint
         l_dir object
       when Hash
         l_hash object, indent_level
+      # Enjoy some CDQ Magic
+      when CDQManagedObject
+        l_cdq object, indent_level
       # when File
       #   l_file object
       # when Struct
       #   l_struct object
       else
         colorize(object)
+      end
+    end
+
+    def l_cdq(c, indent_level = 1)
+      # only recent versions of CDQ can do this
+      if c.respond_to? :attributes
+        "OID: " + colorize(c.oid.gsub('"','')) + "\n" + l_hash(c.attributes, indent_level)
+      else
+        # old colorless method, still more informative than nothing
+        c.log
       end
     end
 
