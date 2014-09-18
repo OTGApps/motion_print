@@ -86,6 +86,4 @@ describe "motion_print gem" do
     end
   end
 
-  # ...
-
 end
