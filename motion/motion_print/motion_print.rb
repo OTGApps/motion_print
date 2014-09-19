@@ -33,7 +33,7 @@ module MotionPrint
     end
 
     def l_cdq(c, indent_level = 1)
-      # only recent versions of CDQ can do this
+      # Requires CDQ > v0.1.10
       if c.respond_to? :attributes
         "OID: " + colorize(c.oid.gsub('"','')) + "\n" + l_hash(c.attributes, indent_level)
       else
