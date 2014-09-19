@@ -5,8 +5,14 @@ module MotionPrint
       !!defined?(MotionRepl)
     end
 
+    def cdq_object
+      return CDQManagedObject if defined? CDQManagedObject
+    end
+
     def logger(object, indent_level = 1)
       case object
+      when nil
+        colorize(object)
       when Symbol
         l_symbol object
       when Array
@@ -19,8 +25,20 @@ module MotionPrint
       #   l_file object
       # when Struct
       #   l_struct object
+      when cdq_object
+        l_cdq object, indent_level
       else
         colorize(object)
+      end
+    end
+
+    def l_cdq(c, indent_level = 1)
+      # only recent versions of CDQ can do this
+      if c.respond_to? :attributes
+        "OID: " + colorize(c.oid.gsub('"','')) + "\n" + l_hash(c.attributes, indent_level)
+      else
+        # old colorless method, still more informative than nothing
+        c.log
       end
     end
 
