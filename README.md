@@ -65,10 +65,19 @@ And then execute:
 ```bash
 bundle
 ```
+## Fancy Debugging Tips
+
+Ruby comes with some great methods for method introspection.  These methods look great in motion_print.
+
+`mp __method__` will echo the name of the method from which you called motion_print.
+
+`mp caller` will trace back up the call stack, so you can see how a method got called.
+
 ## Roadmap
 
 1. Add more core objects people want to output: `UIView`, `Struct`, etc. Please open an issue to make suggestions or just implement it yourself and send me a pull request!
-2. ~~Test suite.~~
+2. Add common gem objects RMQ, ProMotion etc. (CDQ was added and supported)
+3. ~~Test suite.~~
 
 ## What about awesome_print_motion?
 
