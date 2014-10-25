@@ -15,6 +15,17 @@ module MotionPrint
         force_color: nil
       }.merge(options)
 
+      if object.respond_to?(:motion_print)
+        arity = object.method(:motion_print).arity
+        if arity == 1
+          return object.motion_print(self)
+        elsif arity == 2
+          return object.motion_print(self, options)
+        else
+          return colorize(object.motion_print)
+        end
+      end
+
       case object
       when nil
         colorize(object, options[:force_color])
