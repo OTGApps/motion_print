@@ -63,8 +63,7 @@ module MotionPrint
       return "{}" if h.empty?
       data, out = [], []
 
-      keys = h.keys.sort { |a, b| a.to_s <=> b.to_s }
-      keys.each do |key|
+      h.keys.each do |key|
         data << [logger(key), h[key]]
       end
 
