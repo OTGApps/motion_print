@@ -4,7 +4,7 @@ module Kernel
 
     if MotionPrint.simulator?
       puts logger
-    else
+    elsif MotionPrint.nslog_enabled?
       logger.split("\n").each { |line| NSLog(line) }
     end
     object unless MotionPrint.console?

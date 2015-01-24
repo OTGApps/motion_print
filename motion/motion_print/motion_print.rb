@@ -5,6 +5,14 @@ module MotionPrint
       !!defined?(MotionRepl)
     end
 
+    def enable_nslog
+      @nslog_enabled = true
+    end
+
+    def nslog_enabled?
+      !@nslog_enabled.nil?
+    end
+
     def simulator?
       @simulator ||= !(UIDevice.currentDevice.model =~ /simulator/i).nil?
     end

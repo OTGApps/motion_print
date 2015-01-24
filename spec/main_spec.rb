@@ -78,6 +78,12 @@ describe "motion_print gem" do
     MotionPrint.simulator?.should == !(UIDevice.currentDevice.model =~ /simulator/i).nil?
   end
 
+  it 'allows opt-in for NSLog behavior' do
+    MotionPrint.nslog_enabled?.should == false
+    MotionPrint.enable_nslog
+    MotionPrint.nslog_enabled?.should == true
+  end
+
   describe "CDQ Object Handling" do
     # Mock CDQ object
     before do
