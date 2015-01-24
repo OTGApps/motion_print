@@ -1,6 +1,12 @@
 module Kernel
   def mp(object, options = {})
-    puts MotionPrint.logger(object)
+    logger = MotionPrint.logger(object)
+
+    if MotionPrint.simulator?
+      puts logger
+    else
+      logger.split("\n").each { |line| NSLog(line) }
+    end
     object unless MotionPrint.console?
   end
 

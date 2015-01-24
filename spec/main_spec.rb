@@ -73,6 +73,11 @@ describe "motion_print gem" do
     MotionPrint.logger(false).should == "\e[1;31mfalse\e[0m"
   end
 
+  it 'detects the simulator correctly' do
+    MotionPrint.respond_to?(:simulator?).should == true
+    MotionPrint.simulator?.should == !(UIDevice.currentDevice.model =~ /simulator/i).nil?
+  end
+
   describe "CDQ Object Handling" do
     # Mock CDQ object
     before do

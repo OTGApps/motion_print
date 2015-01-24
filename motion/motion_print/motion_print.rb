@@ -5,6 +5,10 @@ module MotionPrint
       !!defined?(MotionRepl)
     end
 
+    def simulator?
+      @simulator ||= !(UIDevice.currentDevice.model =~ /simulator/i).nil?
+    end
+
     def cdq_object
       return CDQManagedObject if defined? CDQManagedObject
     end
