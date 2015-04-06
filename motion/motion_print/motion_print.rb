@@ -9,95 +9,99 @@ module MotionPrint
       return CDQManagedObject if defined? CDQManagedObject
     end
 
-    def logger(object, indent_level = 1)
+    def logger(object, options = {})
+      options = {
+        indent_level: 1,
+        force_color: nil
+      }.merge(options)
+
       case object
       when nil
-        colorize(object)
+        colorize(object, options[:force_color])
       when Symbol
-        l_symbol object
+        l_symbol(object, options)
       when Array
-        l_array object, indent_level
+        l_array(object, options)
       when Dir
-        l_dir object
+        l_dir(object, options)
       when Hash
-        l_hash object, indent_level
+        l_hash(object, options)
       # when File
       #   l_file object
       # when Struct
       #   l_struct object
       when cdq_object
-        l_cdq object, indent_level
+        l_cdq(object, options)
       else
-        colorize(object)
+        colorize(object, options[:force_color])
       end
     end
 
-    def l_cdq(c, indent_level = 1)
+    def l_cdq(c, options)
       # Requires CDQ > v0.1.10
       if c.respond_to? :attributes
-        "OID: " + colorize(c.oid.gsub('"','')) + "\n" + l_hash(c.attributes, indent_level)
+        "OID: " + colorize(c.oid.gsub('"',''), options[:force_color]) + "\n" + l_hash(c.attributes, options)
       else
         # old colorless method, still more informative than nothing
         c.log
       end
     end
 
-    def l_array(a, indent_level = 1)
+    def l_array(a, options)
       return "[]" if a.empty?
       out = []
 
       a.each do |arr|
 
         if arr.is_a?(Array) || arr.is_a?(Hash)
-          v = logger(arr, indent_level + 1)
+          v = logger(arr, options.merge({indent_level: options[:indent_level] + 1}))
         else
-          v = logger(arr)
+          v = logger(arr, options)
         end
-        out << (indent_by(indent_level) << v)
+        out << (indent_by(options[:indent_level]) << v)
       end
 
-      "[\n" << out.join(",\n") << "\n#{indent_by(indent_level-1)}]"
+      "[\n" << out.join(",\n") << "\n#{indent_by(options[:indent_level]-1)}]"
     end
 
-    def l_hash(h, indent_level = 1)
+    def l_hash(h, options)
       return "{}" if h.empty?
       data, out = [], []
 
       h.keys.each do |key|
-        data << [logger(key), h[key]]
+        data << [logger(key, options), h[key]]
       end
 
       width = data.map { |key, | key.size }.max || 0
-      width += indent_by(indent_level).length
+      width += indent_by(options[:indent_level]).length
 
       data.each do |key, value|
         if value.is_a?(Array) || value.is_a?(Hash)
-          v = logger(value, indent_level + 1)
+          v = logger(value, options.merge({indent_level: options[:indent_level] + 1}))
         else
-          v = logger(value)
+          v = logger(value, options)
         end
-        out << (align(key, width, indent_level) << hash_rocket << v)
+        out << (align(key, width, options[:indent_level]) << hash_rocket(options[:force_color]) << v)
       end
 
-      "{\n" << out.join(",\n") << "\n#{indent_by(indent_level-1)}}"
+      "{\n" << out.join(",\n") << "\n#{indent_by(options[:indent_level]-1)}}"
     end
 
-    def l_dir(d)
+    def l_dir(d, options)
       ls = `ls -alF #{d.path.shellescape}`
-      colorize(ls.empty? ? d.inspect : "#{d.inspect}\n#{ls.chop}")
+      colorize(ls.empty? ? d.inspect : "#{d.inspect}\n#{ls.chop}", options[:force_color])
     end
 
-    def l_symbol(object)
-      colorize(object, object)
+    def l_symbol(object, options)
+      colorize(object, options[:force_color])
     end
 
-    def colorize(object, type = nil)
-      type = object if type.nil?
-      Colorizer.send(decide_color(type), object.inspect)
+    def colorize(object, force_color = nil)
+      Colorizer.send(force_color || decide_color(object), object.inspect)
     end
 
-    def hash_rocket
-      Colorizer.send(decide_color(:hash), " => ")
+    def hash_rocket(force_color = nil)
+      Colorizer.send(force_color || decide_color(:hash), " => ")
     end
 
     def decide_color(object)

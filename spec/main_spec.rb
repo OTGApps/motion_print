@@ -17,6 +17,21 @@ describe "motion_print gem" do
     MotionPrint.colors[:fixnum].should == :blue
   end
 
+  it 'forces a color no matter the type' do
+    # Strings
+    MotionPrint.logger("String", force_color: :blue).should == "\e[1;34m\"String\"\e[0m"
+    MotionPrint.logger("String", force_color: :red).should == "\e[1;31m\"String\"\e[0m"
+
+    # Arrays
+    MotionPrint.logger([1, '2'], force_color: :purple).should == "[\n  \e[1;35m1\e[0m,\n  \e[1;35m\"2\"\e[0m\n]"
+
+    # Hashes
+    MotionPrint.logger({a: 'b', c: :d}, force_color: :white).should == "{\n  \e[1;37m:a\e[0m  \e[1;37m => \e[0m\e[1;37m\"b\"\e[0m,\n  \e[1;37m:c\e[0m  \e[1;37m => \e[0m\e[1;37m:d\e[0m\n}"
+
+    # Symbols
+    MotionPrint.logger(:a_symbol, force_color: :green).should == "\e[1;32m:a_symbol\e[0m"
+  end
+
   it 'aligns strings properly' do
     MotionPrint.align('RubyMotion', 0, 0).should == 'RubyMotion'
     MotionPrint.align('RubyMotion', 5, 0).should == 'RubyMotion'
