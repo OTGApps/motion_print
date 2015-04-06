@@ -73,6 +73,12 @@ Ruby comes with some great methods for method introspection.  These methods look
 
 `mp caller` will trace back up the call stack, so you can see how a method got called.
 
+You can force a color of the output if you want like this:
+
+```ruby
+mp "My String", force_color: :blue # This is usually yellow
+```
+
 ## Roadmap
 
 1. Add more core objects people want to output: `UIView`, `Struct`, etc. Please open an issue to make suggestions or just implement it yourself and send me a pull request!
