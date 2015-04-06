@@ -2,7 +2,7 @@
 
 A RubyMotion pretty printer.
 
-[![Gem Version](https://badge.fury.io/rb/motion_print.svg)](http://badge.fury.io/rb/motion_print) [![Build Status](https://travis-ci.org/OTGApps/motion_print.svg)](https://travis-ci.org/OTGApps/motion_print) [![Code Climate](https://codeclimate.com/github/MohawkApps/motion_print.png)](https://codeclimate.com/github/MohawkApps/motion_print)
+[![Gem Version](https://badge.fury.io/rb/motion_print.svg)](http://badge.fury.io/rb/motion_print) [![Build Status](https://travis-ci.org/OTGApps/motion_print.svg)](https://travis-ci.org/OTGApps/motion_print) [![Code Climate](https://codeclimate.com/github/OTGapps/motion_print.png)](https://codeclimate.com/github/OTGApps/motion_print)
 
 instead of using `p` or `puts`, use `mp` to log your debug values to the RubyMotion REPL.
 
@@ -57,7 +57,7 @@ gem 'motion_print'
 
 Bleeding Edge:
 ```ruby
-gem 'motion_print', github: 'MohawkApps/motion_print'
+gem 'motion_print', github: 'OTGApps/motion_print'
 ```
 
 And then execute:
@@ -99,10 +99,10 @@ That, coupled with the fact that the developer of awesome_print_motion doesn't s
 
 ## Contact
 
-Mark Rickert ([http://www.mohawkapps.com](http://www.mohawkapps.com))
+Mark Rickert ([http://otgapps.io](http://otgapps.io))
 
 - [http://twitter.com/markrickert](http://twitter.com/markrickert)
-- [mark@mohawkapps.com](mark@mohawkapps.com)
+- [mark@otgapps.io](mark@otgapps.io)
 
 ## License
 
