@@ -52,13 +52,7 @@ module MotionPrint
       out = []
 
       a.each do |arr|
-
-        if arr.is_a?(Array) || arr.is_a?(Hash)
-          v = logger(arr, options.merge({indent_level: options[:indent_level] + 1}))
-        else
-          v = logger(arr, options)
-        end
-        out << (indent_by(options[:indent_level]) << v)
+        out << (indent_by(options[:indent_level]) << array_hash_logger(arr, options))
       end
 
       "[\n" << out.join(",\n") << "\n#{indent_by(options[:indent_level]-1)}]"
@@ -76,15 +70,18 @@ module MotionPrint
       width += indent_by(options[:indent_level]).length
 
       data.each do |key, value|
-        if value.is_a?(Array) || value.is_a?(Hash)
-          v = logger(value, options.merge({indent_level: options[:indent_level] + 1}))
-        else
-          v = logger(value, options)
-        end
-        out << (align(key, width, options[:indent_level]) << hash_rocket(options[:force_color]) << v)
+        out << (align(key, width, options[:indent_level]) << hash_rocket(options[:force_color]) << array_hash_logger(value, options))
       end
 
       "{\n" << out.join(",\n") << "\n#{indent_by(options[:indent_level]-1)}}"
+    end
+
+    def array_hash_logger(value, options)
+      if value.is_a?(Array) || value.is_a?(Hash)
+        logger(value, options.merge({indent_level: options[:indent_level] + 1}))
+      else
+        logger(value, options)
+      end
     end
 
     def l_dir(d, options)
