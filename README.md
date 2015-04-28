@@ -2,7 +2,9 @@
 
 A RubyMotion pretty printer.
 
-[![Gem Version](https://badge.fury.io/rb/motion_print.svg)](http://badge.fury.io/rb/motion_print) [![Build Status](https://travis-ci.org/OTGApps/motion_print.svg)](https://travis-ci.org/OTGApps/motion_print) [![Code Climate](https://codeclimate.com/github/OTGapps/motion_print.png)](https://codeclimate.com/github/OTGApps/motion_print)
+[![Gem Version](https://badge.fury.io/rb/motion_print.svg)](http://badge.fury.io/rb/motion_print) 
+[![Build Status](https://travis-ci.org/OTGApps/motion_print.svg)](https://travis-ci.org/OTGApps/motion_print) 
+[![Code Climate](https://codeclimate.com/github/OTGApps/motion_print/badges/gpa.svg)](https://codeclimate.com/github/OTGApps/motion_print)
 
 instead of using `p` or `puts`, use `mp` to log your debug values to the RubyMotion REPL.
 
