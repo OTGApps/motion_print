@@ -30,6 +30,9 @@ describe 'opt in motion_print support' do
     it 'should support motion_print, arity == 0' do
       MotionPrint.logger(SimpleMotionPrint.new).should == "\e[0;33m\"SimpleMotionPrint\"\e[0m"
     end
+    it 'should support motion_print, arity == 0, with options' do
+      MotionPrint.logger(SimpleMotionPrint.new, force_color: :blue).should == "\e[1;34m\"SimpleMotionPrint\"\e[0m"
+    end
   end
   describe CustomMotionPrint do
     it 'should support motion_print, arity == 1' do

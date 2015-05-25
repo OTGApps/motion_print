@@ -101,7 +101,7 @@ module MotionPrint
         when 2
           return object.motion_print(self, options)
         else
-          return colorize(object.motion_print)
+          return colorize(object.motion_print, options[:force_color])
         end
       end
 
