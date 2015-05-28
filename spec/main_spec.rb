@@ -88,6 +88,18 @@ describe "motion_print gem" do
     MotionPrint.logger(false).should == "\e[1;31mfalse\e[0m"
   end
 
+  it 'outputs string correctly' do
+    MotionPrint.logger('boo!').should == "\e[0;33m\"boo!\"\e[0m"
+  end
+
+  it 'outputs string with newlines correctly' do
+    MotionPrint.logger("a\nb\nc").should == "\e[0;33m\"a\\nb\\nc\"\e[0m"
+  end
+
+  it 'outputs string with newlines indented correctly' do
+    MotionPrint.logger(["a\nb\nc"], indent_level: 2).should == "[\n    \e[0;33m\"a\\nb\\nc\"\e[0m\n  ]"
+  end
+
   describe "CDQ Object Handling" do
     # Mock CDQ object
     before do

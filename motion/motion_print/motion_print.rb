@@ -33,7 +33,7 @@ module MotionPrint
       when cdq_object
         l_cdq(object, options)
       else
-        colorize(object, options[:force_color])
+        l_custom(object, options)
       end
     end
 
@@ -90,6 +90,21 @@ module MotionPrint
     end
 
     def l_symbol(object, options)
+      colorize(object, options[:force_color])
+    end
+
+    def l_custom(object, options)
+      if object.respond_to?(:motion_print)
+        case object.method(:motion_print).arity
+        when 1
+          return object.motion_print(self)
+        when 2
+          return object.motion_print(self, options)
+        else
+          return colorize(object.motion_print, options[:force_color])
+        end
+      end
+
       colorize(object, options[:force_color])
     end
 
