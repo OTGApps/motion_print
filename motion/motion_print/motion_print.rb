@@ -5,10 +5,6 @@ module MotionPrint
       !!defined?(MotionRepl)
     end
 
-    def cdq_object
-      return CDQManagedObject if defined? CDQManagedObject
-    end
-
     def logger(object, options = {})
       options = {
         indent_level: 1,
@@ -30,20 +26,8 @@ module MotionPrint
       #   l_file object
       # when Struct
       #   l_struct object
-      when cdq_object
-        l_cdq(object, options)
       else
         l_custom(object, options)
-      end
-    end
-
-    def l_cdq(c, options)
-      # Requires CDQ > v0.1.10
-      if c.respond_to? :attributes
-        "OID: " + colorize(c.oid.gsub('"',''), options[:force_color]) + "\n" + l_hash(c.attributes, options)
-      else
-        # old colorless method, still more informative than nothing
-        c.log
       end
     end
 

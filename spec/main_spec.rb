@@ -100,19 +100,4 @@ describe "motion_print gem" do
     MotionPrint.logger(["a\nb\nc"], indent_level: 2).should == "[\n    \e[0;33m\"a\\nb\\nc\"\e[0m\n  ]"
   end
 
-  describe "CDQ Object Handling" do
-    # Mock CDQ object
-    before do
-      class CDQManagedObject
-        def log
-          "called"
-        end
-      end
-    end
-
-    it 'handles CDQManagedObject printing' do
-      MotionPrint.logger(CDQManagedObject.new).should == "called"
-    end
-  end
-
 end
