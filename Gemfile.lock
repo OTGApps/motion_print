@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    motion_print (1.0.0)
+    motion_print (1.1.1)
 
 GEM
   remote: https://rubygems.org/
