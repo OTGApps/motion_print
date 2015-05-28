@@ -126,7 +126,7 @@ That, coupled with the fact that the developer of awesome_print_motion doesn't s
 
 `awesome_print_motion` is 793 lines of code and extends `Array`, `Kernel`, `Class`, and `Object`, and is _not_ tested.
 
-`motion_print` is 152 lines of code, adds one method each to `String`, and `Kernel`, and is _fully_ tested (run `rake spec` to see the tests pass).
+`motion_print` is 174 lines of code, adds one method each to `String`, and `Kernel`, and is _fully_ tested (run `rake spec` to see the tests pass).
 
 ## Contributing
 
