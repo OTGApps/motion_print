@@ -2,8 +2,8 @@
 
 A RubyMotion pretty printer.
 
-[![Gem Version](https://badge.fury.io/rb/motion_print.svg)](http://badge.fury.io/rb/motion_print) 
-[![Build Status](https://travis-ci.org/OTGApps/motion_print.svg)](https://travis-ci.org/OTGApps/motion_print) 
+[![Gem Version](https://badge.fury.io/rb/motion_print.svg)](http://badge.fury.io/rb/motion_print)
+[![Build Status](https://travis-ci.org/OTGApps/motion_print.svg)](https://travis-ci.org/OTGApps/motion_print)
 [![Code Climate](https://codeclimate.com/github/OTGApps/motion_print/badges/gpa.svg)](https://codeclimate.com/github/OTGApps/motion_print)
 
 instead of using `p` or `puts`, use `mp` to log your debug values to the RubyMotion REPL.
@@ -67,6 +67,37 @@ And then execute:
 ```bash
 bundle
 ```
+
+## Woah! This is great! How can I make my gem support `motion_print`?
+
+`motion_print` supports other gems (or even your own classes in your project ) with an opt-in feature. All you have to do is implement the `motion_print` method in your class (with option `mp` and `options` arguments). You can see an example implementation of this [in the specs](https://github.com/OTGApps/motion_print/blob/master/spec/opt_in_spec.rb).
+
+### Essentially:
+
+```ruby
+def MyCustomClass
+  def motion_print(mp)
+    # This will output in red!
+    mp.colorize("Some Output Here!", :red)
+  end
+end
+```
+
+Here's CDQ's implementation:
+
+```ruby
+class CDQManagedObject
+  def motion_print(mp, options)
+    if respond_to? :attributes
+      "OID: " + mp.colorize(oid.gsub('"',''), options[:force_color]) + "\n" + mp.l_hash(attributes, options)
+    else
+      # old colorless method, still more informative than nothing
+      log
+    end
+  end
+end
+```
+
 ## Fancy Debugging Tips
 
 Ruby comes with some great methods for method introspection.  These methods look great in motion_print.
