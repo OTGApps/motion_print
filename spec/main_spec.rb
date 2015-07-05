@@ -108,7 +108,9 @@ describe "motion_print gem" do
       end
     end
     ivar = Foo.new
-    MotionPrint.logger(ivar).should == "\e[1;33mFoo\e[0m\n  \e[0;35m:@bar1\e[0m  \e[0;36m => \e[0m\e[0;37m1\e[0m\n  \e[0;36m:@bar2\e[0m  \e[0;36m => \e[0m\e[0;37m2\e[0m\n"
+    # MotionPrint.logger(ivar).should == "\e[1;33mFoo\e[0m\n  \e[0;35m:@bar1\e[0m  \e[0;36m => \e[0m\e[0;37m1\e[0m\n  \e[0;36m:@bar2\e[0m  \e[0;36m => \e[0m\e[0;37m2\e[0m\n"
+    MotionPrint.logger(ivar).start_with?("\e[1;33m#<Foo:0x").should == true
+    MotionPrint.logger(ivar).end_with?(">\e[0m\n  \e[0;35m:@bar1\e[0m  \e[0;36m => \e[0m\e[0;37m1\e[0m\n  \e[0;36m:@bar2\e[0m  \e[0;36m => \e[0m\e[0;37m2\e[0m\n").should == true
   end
 
 end

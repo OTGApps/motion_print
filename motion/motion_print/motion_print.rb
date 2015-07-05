@@ -102,7 +102,7 @@ module MotionPrint
       ivars = object.instance_variables.reject {|item| !item.to_s.start_with?('@')} # only allow proper instance variables
       return colorize(object, options[:force_color]) if !options[:ivar] || ivars.empty?
       data  = []
-      out   = [colorize(object.class, options[:force_color])]
+      out   = [class_address(object, options[:force_color])]
 
       ivars.each do |ivar|
         use_color = object.respond_to?(ivar.to_s[1..-1]) ? colors[:method] : colors[:ivar]
@@ -126,6 +126,10 @@ module MotionPrint
 
     def hash_rocket(force_color = nil)
       Colorizer.send(force_color || decide_color(:hash), " => ")
+    end
+
+    def class_address(object, force_color = nil)
+      Colorizer.send(force_color || colors[:class], "#<#{object.class}:0x%08x>" % (object.object_id))
     end
 
     def decide_color(object)
