@@ -20,7 +20,7 @@ describe 'colorizer' do
       {rubymotion: "rocks!"},
       Time.now,
       Object.new,
-      UIView.new,
+      NSSet.new,
       4,
       12.0,
       true
