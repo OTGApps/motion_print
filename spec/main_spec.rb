@@ -100,4 +100,18 @@ describe "motion_print gem" do
     MotionPrint.logger(["a\nb\nc"], indent_level: 2).should == "[\n    \e[0;33m\"a\\nb\\nc\"\e[0m\n  ]"
   end
 
+  it 'outputs instance variables properly' do
+    class Foo
+      attr_accessor :bar1
+      def initialize
+        @bar1, @bar2 = 1, 2
+      end
+    end
+    ivar = Foo.new
+    # MotionPrint.logger(ivar).should == "\e[1;33mFoo\e[0m\n  \e[0;35m:@bar1\e[0m  \e[0;36m => \e[0m\e[0;37m1\e[0m\n  \e[0;36m:@bar2\e[0m  \e[0;36m => \e[0m\e[0;37m2\e[0m\n"
+    MotionPrint.logger(ivar).start_with?("\e[1;33m#<Foo:0x").should == true
+    MotionPrint.logger(ivar).end_with?(">\e[0m\n  \e[0;35m:@bar1\e[0m  \e[0;36m => \e[0m\e[0;37m1\e[0m\n  \e[0;36m:@bar2\e[0m  \e[0;36m => \e[0m\e[0;37m2\e[0m\n").should == true
+  end
+
 end
+
