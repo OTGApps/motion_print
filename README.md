@@ -98,6 +98,18 @@ class CDQManagedObject
 end
 ```
 
+## Enabling NSLog on the Device
+
+Normally, `mp` will not print output when the app is run on the device. To enable output via NSLog, use `MotionPrint.enable_nslog`:
+
+```ruby
+def application(application, didFinishLaunchingWithOptions:launchOptions)
+  #...
+  MotionPrint.enable_nslog
+  #...
+end
+```
+
 ## Fancy Debugging Tips
 
 Ruby comes with some great methods for method introspection.  These methods look great in motion_print.
