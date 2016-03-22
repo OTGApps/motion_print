@@ -113,5 +113,10 @@ describe "motion_print gem" do
     MotionPrint.logger(ivar).end_with?(">\e[0m\n  \e[0;35m:@bar1\e[0m  \e[0;36m => \e[0m\e[0;37m1\e[0m\n  \e[0;36m:@bar2\e[0m  \e[0;36m => \e[0m\e[0;37m2\e[0m\n").should == true
   end
 
+  it 'allows opt-in for NSLog behavior' do
+    MotionPrint.nslog_enabled?.should == false
+    MotionPrint.enable_nslog
+    MotionPrint.nslog_enabled?.should == true
+  end
 end
 

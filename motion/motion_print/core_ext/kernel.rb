@@ -1,7 +1,14 @@
 module Kernel
   def mp(object, options = {})
     output_stream = RUBYMOTION_ENV == "test" ? $stderr : $stdout
-    output_stream.puts MotionPrint.logger(object, options)
+    
+    log = MotionPrint.logger(object, options)
+    if MotionPrint.simulator?
+      output_stream.puts log
+    elsif MotionPrint.nslog_enabled?
+      log.split("\n").each { |line| NSLog(line) }
+    end
+
     object unless MotionPrint.console?
   end
 

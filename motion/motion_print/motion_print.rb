@@ -173,5 +173,22 @@ module MotionPrint
     def align(value, width, indent = 1)
       (indent_by(indent) + value.ljust(width)).chomp
     end
+    
+    def enable_nslog
+      @nslog_enabled = true
+    end
+
+    def nslog_enabled?
+      !@nslog_enabled.nil?
+    end
+
+    # Borrowed from BubbleWrap's Device.simulator?
+    def simulator?
+      if UIDevice.currentDevice.systemVersion.to_i >= 9
+        !NSBundle.mainBundle.bundlePath.start_with?('/var/')
+      else
+        !(UIDevice.currentDevice.model =~ /simulator/i).nil?
+      end
+    end
   end
 end
